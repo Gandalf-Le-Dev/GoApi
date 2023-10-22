@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Go API",
+      "Group": "Go",
+      "Host": "postgres_db",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "user",
+      "PassFile": "/var/lib/pgadmin/storage/pgadmin_pgadmin.com/pgpass",
+      "SSLMode": "prefer"
+    }
+  }
+}

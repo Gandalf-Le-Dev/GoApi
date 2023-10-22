@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  postgres_db:
+    image: postgres:alpine3.18
+    container_name: postgres_db
+    restart: unless-stopped
+    ports:
+        - "5432:5432"
+    environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: goapi_db
+    volumes:
+      - ./postgres_db_data:/var/lib/postgresql/data
+      - ../schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  pgadmin:
+    build:
+        context: .
+        dockerfile: ./pgadmin.dockerfile
+    container_name: pgadmin
+    restart: unless-stopped
+    ports:
+        - "5050:80" # Access pgadmin on http://localhost:5050/browser
+    environment:
+        PGADMIN_DEFAULT_EMAIL: admin@domain.com
+        PGADMIN_DEFAULT_PASSWORD: adminpassword
+    volumes:
+        - ./pgadmin_data:/var/lib/pgadmin
+        - ./servers.json:/pgadmin4/servers.json
+    depends_on:
+        - postgres_db
+
+volumes:
+    postgres_db_data:
+    pgadmin_data:    
+    
