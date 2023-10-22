@@ -1,0 +1,9 @@
+wipe = true
+add-enum-types = true
+
+[psql]
+dbname = "goapi_db"
+user = "user"
+pass = "password"
+host = "localhost"
+sslmode = "disable"
