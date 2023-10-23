@@ -1,0 +1,196 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A blog API to learn Go.",
+        "title": "Go API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "paths": {
+        "/posts": {
+            "get": {
+                "description": "Get details of all posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Get all posts",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Create a post",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "description": "Get details of a particular post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Get a post by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Post ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a post by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Update a post",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Post ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "error: Invalid form submitted",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "error: error description",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a post by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Delete a post",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Post ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message: Post deleted",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "error: error description",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/posts/{id}/edit": {
+            "get": {
+                "description": "Get post details for editing by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/html"
+                ],
+                "tags": [
+                    "posts"
+                ],
+                "summary": "Edit a post",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Post ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "error: error description",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// swagger embed files
+
+// Posts godoc
+// @Summary Get all posts
+// @Description Get details of all posts
+// @Tags posts
+// @Accept  json
+// @Produce  json
+// @Success 200
+// @Router /posts [get]
 func Posts(c *gin.Context) {
 	var posts models.PostSlice
 	var err error
@@ -30,6 +40,14 @@ func Posts(c *gin.Context) {
 	c.JSON(http.StatusOK, posts)
 }
 
+// CreatePost godoc
+// @Summary Create a post
+// @Description Create a new post
+// @Tags posts
+// @Accept  json
+// @Produce  json
+// @Success 200
+// @Router /posts [post]
 func CreatePost(c *gin.Context) {
 	post, err := services.CreatePost(c)
 	if err != nil {
@@ -46,6 +64,16 @@ func CreatePost(c *gin.Context) {
 	c.JSON(http.StatusOK, post)
 }
 
+// DeletePost godoc
+// @Summary Delete a post
+// @Description Delete a post by ID
+// @Tags posts
+// @Accept json
+// @Produce json
+// @Param id path int true "Post ID"
+// @Success 200 {object} map[string]interface{} "message: Post deleted"
+// @Failure 500 {object} map[string]interface{} "error: error description"
+// @Router /posts/{id} [delete]
 func DeletePost(c *gin.Context) {
 	id := c.Param("id")
 	err := services.DeletePost(id)
@@ -55,15 +83,20 @@ func DeletePost(c *gin.Context) {
 		return
 	}
 
-	// if c.GetHeader("Accept") == "text/html" {
-	// 	c.Header("Content-Type", "text/html")
-	// 	c.String(http.StatusOK, "")
-	// 	return
-	// }
-
 	c.JSON(http.StatusOK, gin.H{"message": "Post deleted"})
 }
 
+// UpdatePost godoc
+// @Summary Update a post
+// @Description Update a post by ID
+// @Tags posts
+// @Accept json
+// @Produce json
+// @Param id path int true "Post ID"
+// @Success 200
+// @Failure 400 {object} map[string]interface{} "error: Invalid form submitted"
+// @Failure 500 {object} map[string]interface{} "error: error description"
+// @Router /posts/{id} [put]
 func UpdatePost(c *gin.Context) {
 	id := c.Param("id")
 	updatedPost, err := services.UpdatePost(id, c)
@@ -86,6 +119,15 @@ func UpdatePost(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"post": updatedPost})
 }
 
+// GetPost godoc
+// @Summary Get a post by ID
+// @Description Get details of a particular post
+// @Tags posts
+// @Accept  json
+// @Produce  json
+// @Param id path int true "Post ID"
+// @Success 200
+// @Router /posts/{id} [get]
 func GetPost(c *gin.Context) {
 	id := c.Param("id")
 	post, err := services.GetPost(id)
@@ -103,6 +145,17 @@ func GetPost(c *gin.Context) {
 	c.JSON(http.StatusOK, post)
 }
 
+// EditPost godoc
+// @Summary Edit a post
+// @Description Get post details for editing by ID
+// @Tags posts
+// @Accept json
+// @Produce json
+// @Produce html
+// @Param id path int true "Post ID"
+// @Success 200
+// @Failure 500 {object} map[string]interface{} "error: error description"
+// @Router /posts/{id}/edit [get]
 func EditPost(c *gin.Context) {
 	id := c.Param("id")
 	post, err := services.GetPost(id)

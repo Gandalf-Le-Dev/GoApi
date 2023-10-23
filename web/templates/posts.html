@@ -3,8 +3,8 @@
 <li id="post-{{ .PostID }}">
 	<h3>{{ .Title }} - id: {{ .PostID }}</h3>
 	<p>{{ .Content }}</p>
-	<button hx-delete="/posts/{{ .PostID }}" hx-target="#post-{{ .PostID }}" hx-swap="delete" hx-headers='{"Accept": "text/html"}' hx-confirm="Are you sure you wish to delete this post?">Delete</button>
-	<button hx-get="/posts/{{ .PostID }}/edit" hx-target="#edit-post-container" hx-swap="innerHTML" hx-headers='{"Accept": "text/html"}'>Edit</button>
+	<button hx-delete="/api/posts/{{ .PostID }}" hx-target="#post-{{ .PostID }}" hx-swap="delete" hx-headers='{"Accept": "text/html"}' hx-confirm="Are you sure you wish to delete this post?">Delete</button>
+	<button hx-get="/api/posts/{{ .PostID }}/edit" hx-target="#edit-post-container" hx-swap="innerHTML" hx-headers='{"Accept": "text/html"}'>Edit</button>
 </li>
 {{ end }}
 {{ end }}
