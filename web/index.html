@@ -13,7 +13,7 @@
 	<h1>Golang Blog Test Page</h1>
 
 	<!-- Section to Display Posts -->
-	<div id="posts">
+	<div id="posts-container">
 		<h2>Posts</h2>
 		<button hx-get="/posts" hx-trigger="click, load" hx-target="#posts-list" hx-swap="innerHTML" hx-headers='{"Accept": "text/html"}'>
 			Load Posts
@@ -21,6 +21,10 @@
 		<ul id="posts-list">
 			<!-- Posts will be loaded here -->
 		</ul>
+	</div>
+
+	<div id="edit-post-container">
+		<!-- Edit post form will be loaded here -->
 	</div>
 
 	<!-- Form to Create a New Post -->
