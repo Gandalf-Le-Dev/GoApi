@@ -9,7 +9,7 @@
 		<textarea id="content" name="Content" required>{{ .post.Content }}</textarea>
 		<br>
 		<button type="submit">Update Post</button>
-		<button type="button" hx-get="/posts" hx-trigger="click" hx-target="#edit-post-form" hx-swap="delete" hx-headers='{"Accept": "text/html"}'>Cancel</button>
+		<button type="button" hx-get="/api/posts" hx-trigger="click" hx-target="#edit-post-form" hx-swap="delete" hx-headers='{"Accept": "text/html"}'>Cancel</button>
 	</form>
 </div>
 {{ end }}
