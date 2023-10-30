@@ -3,3 +3,4 @@ postgresql/pgadmin_data/*
 !postgresql/pgadmin_data/.gitkeep
 postgresql/postgres_db_data/*
 !postgresql/postgres_db_data/.gitkeep
+.DS_Store
