@@ -1,8 +1,17 @@
-BINARY_NAME = goapi.exe
+OS := $(shell uname -s)
+
+ifeq ($(OS),Windows_NT)
+	BINARY_NAME = goapi.exe
+	RM = powershell Remove-Item -Path
+else
+	BINARY_NAME = goapi
+	RM = rm -rf
+endif
 
 build:
 	@echo "Building..."
 	@go build -o bin/$(BINARY_NAME)
+	@echo "Done."
 
 run: build
 	@echo "Running..."
@@ -13,8 +22,9 @@ test:
 
 clean:
 	@echo "Cleaning up..."
-	go clean
-	@powershell Remove-Item -Path bin -Recurse -Force
+	@go clean
+	@$(RM) bin
+	@echo "Done."
 
 watch:
 	@echo "Watching..."
